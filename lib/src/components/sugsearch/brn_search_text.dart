@@ -154,6 +154,13 @@ class _SearchTextState extends State<BrnSearchText> {
         );
 
     focusNode!.addListener(_handleFocusNodeChangeListenerTick);
+    textEditingController!.addListener(() {
+      if(!textEditingController!.value.isComposingRangeValid){
+        setState(() {
+
+        });
+      }
+    });
   }
 
   @override
@@ -251,7 +258,7 @@ class _SearchTextState extends State<BrnSearchText> {
                             if (widget.onTextChange != null) {
                               widget.onTextChange!(content);
                             }
-                            setState(() {});
+                            // setState(() {});
                           },
                           onSubmitted: (content) {
                             if (widget.onTextCommit != null) {
