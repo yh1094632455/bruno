@@ -78,8 +78,9 @@ class BrnSelectTag extends StatefulWidget {
     this.fixWidthMode = true,
     this.themeData,
   }) : super(key: key) {
-    if (isSingleSelect == true) {
-      assert(initTagState == null || (initTagState!.length <= 1));
+    if (isSingleSelect) {
+      assert(initTagState == null || initTagState!.where((v) => v).length <= 1, 
+        '单选模式下，最多只能有一个标签被选中');
     }
     this.themeData ??= BrnTagConfig();
     this.themeData = BrnThemeConfigurator.instance
